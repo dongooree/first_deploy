@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% comment %} {% for a in abc.all %} {% endcomment %}
+
+
+<div class = "container">
+    <h1>{{a.title}}</h1>
+    <p>{{a.pub_date}}</p>
+    <p>{{a.body}}</p>
+
+<a href="{% url 'home' %}">돌아가기</a>
+
+</div>
+{% comment %} {% endfor %} {% endcomment %}
+
+</body>
+
+{% endblock %}
+

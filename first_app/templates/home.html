@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% for a in posts %}
+
+<div class = "card">
+    <div class="card-body">
+        <h5 class = "card-title">{{a.title}}</h5>
+        <h6 class = "card-subtitle mb-2 text-muted">{{a.pub_date}}</h6>
+        
+        <p class = "card-text">{{a.summary}}</p>
+
+        <a href="{% url 'detail' a.id %}" class = "card-link" >...more</a>
+    </div>
+</div>
+
+{% endfor %}
+
+<div class = "container">
+    {% if posts.has_previous %}
+    <a href="?page=1">처음</a>
+    <a href="?page={{ posts.previous_page_number }}"> 이전</a> <!-- hyperlink라서 띄어쓰기없이 -->
+    {% endif %}
+
+    <span>{{posts.number}}</span>
+    <span> / </span>
+    <span>{{posts.paginator.num_pages}}</span>
+
+    {% if posts.has_next %}
+    <a href="?page={{ posts.next_page_number }}">다음</a>
+    <a href="?page={{ posts.paginator.num_pages }}"> 마지막</a>
+    {% endif %}
+
+</div>
+
+{% endblock %}
